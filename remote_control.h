@@ -1,11 +1,11 @@
 #ifndef _REMOTE_CONTROL_H__
 #define _REMOTE_CONTROL_H__
 
-#include "bsp_dt7_dr16.h"
-
 #include "customer_controller.h"
 
 #include "referee_protocol.h"
+
+#include "bsp_dt7_dr16.h"
 
 // 是否启用图传键鼠数据
 #define USE_VT_LINK (true)
