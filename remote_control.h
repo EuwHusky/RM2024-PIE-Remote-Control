@@ -1,19 +1,14 @@
 #ifndef _REMOTE_CONTROL_H__
 #define _REMOTE_CONTROL_H__
 
+#include "rc_config.h"
+
 #include "customer_controller.h"
 
+#include "bsp_dt7_dr16.h"
 #include "referee_protocol.h"
 
-#include "bsp_dt7_dr16.h"
-
-// 是否启用图传键鼠数据
-#define USE_VT_LINK (true)
-// 是否启用自定义控制器
-#define USE_CUSTOMER_CONTROLLER (false)
-
 #define RC_FRAME_LENGTH 18u
-#define RC_DT7_ROCKER_DEADLINE (2)
 
 typedef enum RemoteControlStatus
 {
@@ -77,8 +72,6 @@ typedef struct RemoteControl
     remote_control_key_status_s cc_keys[CC_KEY_NUM];
 #endif /* USE_CUSTOMER_CONTROLLER */
 } remote_control_s;
-
-extern const remote_control_s *getRemoteControlPointer(void);
 
 extern void RemoteControlInit(const rfl_dt7_dr16_data_s *dt7_dr16_data,
                               const vt_link_remote_control_t *vt_link_remote_control

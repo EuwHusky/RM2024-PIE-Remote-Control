@@ -1,2 +1,5 @@
 # vscode 配置文件
 *.vscode
+
+# 系统配置文件
+rc_config.h

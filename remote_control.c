@@ -4,14 +4,7 @@
 
 #include "referee.h"
 
-#define PRESS_SEN 6
-
-remote_control_s remote_control_data;
-
-const remote_control_s *getRemoteControlPointer(void)
-{
-    return &remote_control_data;
-}
+static remote_control_s remote_control_data;
 
 void RemoteControlInit(const rfl_dt7_dr16_data_s *dt7_dr16_data, const vt_link_remote_control_t *vt_link_remote_control
 #if USE_CUSTOMER_CONTROLLER
@@ -88,7 +81,7 @@ void RemoteControlUpdate(bool is_dt7_connected, bool is_vt_connected)
             remote_control_data.rc_keys[i].press_timer = (remote_control_data.rc_keys[i].press_timer < 255)
                                                              ? (remote_control_data.rc_keys[i].press_timer + 1)
                                                              : 255;
-            if (remote_control_data.rc_keys[i].press_timer == PRESS_SEN)
+            if (remote_control_data.rc_keys[i].press_timer == RC_KEY_PRESS_JUDGE_TIME)
             {
                 remote_control_data.rc_keys[i].falling_edge_detected = 1;
                 remote_control_data.rc_keys[i].was_pressed = 1;
@@ -122,7 +115,7 @@ void RemoteControlUpdate(bool is_dt7_connected, bool is_vt_connected)
             remote_control_data.cc_keys[i].press_timer = (remote_control_data.cc_keys[i].press_timer < 255)
                                                              ? (remote_control_data.cc_keys[i].press_timer + 1)
                                                              : 255;
-            if (remote_control_data.cc_keys[i].press_timer == PRESS_SEN)
+            if (remote_control_data.cc_keys[i].press_timer == RC_KEY_PRESS_JUDGE_TIME)
             {
                 remote_control_data.cc_keys[i].falling_edge_detected = 1;
                 remote_control_data.cc_keys[i].was_pressed = 1;
