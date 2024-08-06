@@ -4,7 +4,7 @@
 
 ## 文件名
 
-config.h
+rc_config.h
 
 ## 文件内容
 
